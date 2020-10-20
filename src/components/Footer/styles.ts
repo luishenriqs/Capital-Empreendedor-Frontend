@@ -20,7 +20,7 @@ export const Form = styled.form`
 
   input {
     width: 220px;
-    height: 60px;
+    height: 50px;
     align-items: center;
     padding: 15px;
     border-radius: 5px;
@@ -33,7 +33,7 @@ export const Form = styled.form`
 
   #smallInput {
     width: 110px;
-    height: 60px;
+    height: 50px;
     align-items: center;
     padding: 15px;
     border-radius: 5px;
@@ -81,7 +81,7 @@ export const Form = styled.form`
   button {
     width: 100px;
     border-radius: 5px;
-    height: 60px;
+    height: 50px;
     background: #FF8000;
     color: #fff;
     border: none;

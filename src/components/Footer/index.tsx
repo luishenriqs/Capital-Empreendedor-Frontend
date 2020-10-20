@@ -61,21 +61,21 @@ const Footer: React.FC = () => {
           type="input"
           value={limit}
           onChange={e => setLimit(e.target.value)}
-          placeholder="limite"
+          placeholder="Limite"
         />
         <input
           id="smallInput"
           type="input"
           value={interest}
           onChange={e => setInterest(e.target.value)}
-          placeholder="interesse"
+          placeholder="Interesse"
         />
         <input
           id="smallInput"
           type="input"
           value={term}
           onChange={e => setTerm(e.target.value)}
-          placeholder="prazo"
+          placeholder="Prazo"
         />
         <button type="button" onClick={() => setIsActive('true')} id="true">
           Ativo
