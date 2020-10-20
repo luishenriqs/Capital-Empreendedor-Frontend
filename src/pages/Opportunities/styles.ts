@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const TableContainer = styled.div`
+
+  display: 1;
 
   legend {
     font-size: 42px;
@@ -8,18 +10,13 @@ export const Container = styled.div`
     text-align: center;
     margin: 60px auto 0;
   }
-
-  form {
+  table {
     display: 1;
     margin: 40px auto 70px;
     
-    table {
+    thead {
       width: 100%;
-
-      tr {
-        display: flex;
-        justify-content: center;
-      }
+      border-spacing: 0 8px;
 
       th {
         color: #969cb3;
@@ -31,12 +28,10 @@ export const Container = styled.div`
         line-height: 24px;
       }
     }
-    
-    section {
-      div {
+    tbody {
+      tr {
         width: 100%;
-        display: flex;
-        justify-content: center;
+        border-spacing: 0 8px;
 
         button {
           background: #fff;
@@ -44,7 +39,6 @@ export const Container = styled.div`
           width: 200px;
           font-weight: normal;
           padding: 20px 15px;
-          margin: 1px;
           text-align: center;
           font-size: 16px;
           border: 0;
@@ -55,18 +49,22 @@ export const Container = styled.div`
           }
         }
       
-        span {
+        td {
           background: #fff;
           color: #969cb3;
           width: 200px;
           font-weight: normal;
           padding: 20px 15px;
-          margin: 1px;
           text-align: center;
           font-size: 16px;
+          border: 0;
         }  
 
-        span:last-child {
+        td:first-child {
+          border-radius: 8px 0 0 8px;
+        }
+
+        td:last-child {
           border-radius: 0 8px 8px 0;
         }
       }

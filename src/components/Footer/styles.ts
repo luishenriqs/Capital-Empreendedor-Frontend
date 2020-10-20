@@ -12,8 +12,8 @@ export const Form = styled.form`
   }
 
   fieldset {
-    width: 1350px;
-    padding: 30px;
+    width: 1250px;
+    padding: 30px 39px;
     border: none;
     margin: 0 auto;
   }

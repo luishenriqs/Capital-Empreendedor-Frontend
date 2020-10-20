@@ -3,7 +3,8 @@ import api from '../../services/api';
 import Header from '../../components/Header/index';
 import Footer from '../../components/Footer/index';
 import formatValue from '../../utils/FormatValue';
-import { TableContainer } from './styles';
+import { Container } from './styles';
+import { Link } from 'react-router-dom';
 
 interface UserInterface {
   name: string;
@@ -24,42 +25,48 @@ const Dashboard: React.FC = () => {
       const array: any[] = Object.values(dados);
        setAllUsers(array);
     }
-    
     loadAll();
   }, []);
 
   return (
     <>
       <Header />
-      <TableContainer>
+      <Container>
         <legend>Nossos clientes:</legend>
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Ativo/Inativo</th>
-              <th>Contato</th>
-              <th>Receita</th>
-              <th>Aceite</th>
-            </tr>
-          </thead>
-          {allUsers.map(user => (
-            <tbody key={user.name}>
+        <form>
+          <table>
+            <thead>
               <tr>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{ user.isActive === true ? "Ativo" : "Inativo" }</td>
-                <td>{user.phone}</td>
-                <td>{formatValue(user.revenue)}</td>
-                <td>{ 
-                  user.agreedTerms === true ? "Termos Acordados" : "Sem Acordo"
-                }</td>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ativo/Inativo</th>
+                <th>Contato</th>
+                <th>Receita</th>
+                <th>Aceite</th>
               </tr>
-            </tbody>
+            </thead>
+          </table>
+          {allUsers.map(user => (
+            <section key={user.name}>
+              <div>
+                <Link to={`/opportunities/:${user.email}/:${user.name}`}>
+                  <button 
+                    type="button" >
+                      {user.name}
+                  </button>
+                </Link>
+                <span>{user.email}</span>
+                <span>{ user.isActive === true ? "Ativo" : "Inativo" }</span>
+                <span>{user.phone}</span>
+                <span>{formatValue(user.revenue)}</span>
+                <span>{ 
+                  user.agreedTerms === true ? "Termos Acordados" : "Sem Acordo"
+                }</span>
+              </div>
+            </section>
           ))}
-        </table>
-      </TableContainer>
+        </form>
+      </Container>
       <Footer />
     </>
   );
