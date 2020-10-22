@@ -3,7 +3,7 @@ import api from '../../services/api';
 import Header from '../../components/Header/index';
 import Footer from '../../components/Footer/index';
 import formatValue from '../../utils/FormatValue';
-import { TableContainer } from './styles';
+import { Container } from './styles';
 
 interface OpportunityInterface {
   name: string;
@@ -16,52 +16,73 @@ interface OpportunityInterface {
 const Opportunities: React.FC = () => {
 
   const [opportunities, setOpportunities] = useState<OpportunityInterface[]>([]);
+  const [resp, setResp] = useState([])
 
   const url = window.location;
   var params = url.pathname.split(':')
   const email = params[1].replace('/','')
   const name = params[2].replace('%20','')
   
-
   useEffect(() => {
-    async function loadOpportunities(): Promise<void> {
+    const loadOpportunities = async (): Promise<void> => {
       const response = await api.get(`/opportunities/${email}`);
       const dados = response.data;
       const array: any[] = Object.values(dados);
       setOpportunities(array);
     }
     loadOpportunities();
-  }, []);
-
+  }, [resp]);
   
+  async function handleChangeStatus(name: string, status: boolean): Promise<void> {
+    const response = await api.put(`/opportunities/${email}`, {
+      name: name,
+      newStatus: status
+    })
+    setResp(response.data);
+  }
+
   return (
     <>
       <Header />
-      <TableContainer>
+      <Container>
         <legend>Oportunidades {name}:</legend>
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Limite</th>
-              <th>Interesse</th>
-              <th>Prazo</th>
-              <th>Ativo/Inativo</th>
-            </tr>
-          </thead>
-          {opportunities.map(opportunity => (
-            <tbody key={opportunity.name}>
+        <form>
+          <table>
+            <thead>
               <tr>
-                <td>{ opportunity.name }</td>
-                <td>{ formatValue(opportunity.limit) }</td>
-                <td>{ opportunity.interest }</td>
-                <td>{ opportunity.term }</td>
-                <td>{ opportunity.isActive === true ? "Ativo" : "Inativo" }</td>
+                <th>Nome</th>
+                <th>Limite</th>
+                <th>Interesse</th>
+                <th>Prazo</th>
+                <th>Ativo/Inativo</th>
               </tr>
-            </tbody>
-          ))}
-        </table>
-      </TableContainer>
+            </thead>
+          </table>
+          {opportunities.map(opportunity => { 
+
+            const name = opportunity.name;
+            const status = opportunity.isActive === true ? false : true;
+            const isActive = opportunity.isActive === true ? "Ativo" : "Inativo";
+            
+            return (
+              <section key={opportunity.name}>
+                <div>
+                  <span>{ opportunity.name }</span>
+                  <span>{ formatValue(opportunity.limit) }</span>
+                  <span>{ opportunity.interest }</span>
+                  <span>{ opportunity.term }</span>
+                  <button
+                    type="button"
+                    onClick={() => {handleChangeStatus(name, status)}}
+                    className={isActive}>
+                      {isActive}
+                  </button>
+                </div>
+              </section>
+            )
+          })}
+        </form>
+      </Container>
       <Footer />
     </>
   );

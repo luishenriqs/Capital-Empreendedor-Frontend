@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import api from '../../services/api';
-import { Form } from './styles';
+import { Container } from './styles';
 import Logo from '../../assets/Logo2.png';
 
 interface Opportunity {
@@ -41,53 +41,55 @@ const Footer: React.FC = () => {
     return opportunity;
   }
   return (
-    <Form onSubmit={handleAddOpportunity}>
-      <fieldset>
-        <legend>Cadastre aqui um novo financiamento.</legend>
-        <input
-          type="input"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          placeholder="Email do cliente"
-        />
-        <input
-          type="input"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder="Nome da instituição"
-        />
-        <input
-          id="smallInput"
-          type="input"
-          value={limit}
-          onChange={e => setLimit(e.target.value)}
-          placeholder="Limite"
-        />
-        <input
-          id="smallInput"
-          type="input"
-          value={interest}
-          onChange={e => setInterest(e.target.value)}
-          placeholder="Interesse"
-        />
-        <input
-          id="smallInput"
-          type="input"
-          value={term}
-          onChange={e => setTerm(e.target.value)}
-          placeholder="Prazo"
-        />
-        <button type="button" onClick={() => setIsActive('true')} id="true">
-          Ativo
-        </button>
-        <button type="button" onClick={() => setIsActive('false')} id="false">
-          Inativo
-        </button>
+    <Container>
+      <form onSubmit={handleAddOpportunity}>
+        <fieldset>
+          <legend>Cadastre aqui um novo financiamento.</legend>
+          <input
+            type="input"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email do cliente"
+          />
+          <input
+            type="input"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Nome da instituição"
+          />
+          <input
+            id="smallInput"
+            type="input"
+            value={limit}
+            onChange={e => setLimit(e.target.value)}
+            placeholder="Limite"
+          />
+          <input
+            id="smallInput"
+            type="input"
+            value={interest}
+            onChange={e => setInterest(e.target.value)}
+            placeholder="Interesse"
+          />
+          <input
+            id="smallInput"
+            type="input"
+            value={term}
+            onChange={e => setTerm(e.target.value)}
+            placeholder="Prazo"
+          />
+          <button type="button" onClick={() => setIsActive('true')} id="true">
+            Ativo
+          </button>
+          <button type="button" onClick={() => setIsActive('false')} id="false">
+            Inativo
+          </button>
 
-        <button type="submit">Enviar</button>
-      </fieldset>
+          <button type="submit">Enviar</button>
+        </fieldset>
+      </form>
       <img src={Logo} alt="Capital Empreendedor" />
-    </Form>
+    </Container>
   );
 };
 

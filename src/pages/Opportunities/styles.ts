@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const TableContainer = styled.div`
-
-  display: 1;
+export const Container = styled.div`
 
   legend {
     font-size: 42px;
@@ -10,13 +8,17 @@ export const TableContainer = styled.div`
     text-align: center;
     margin: 60px auto 0;
   }
-  table {
+  form {
     display: 1;
     margin: 40px auto 70px;
     
-    thead {
+    table {
       width: 100%;
-      border-spacing: 0 8px;
+
+      tr {
+        display: flex;
+        justify-content: center;
+      }
 
       th {
         color: #969cb3;
@@ -28,10 +30,27 @@ export const TableContainer = styled.div`
         line-height: 24px;
       }
     }
-    tbody {
-      tr {
+
+    section {
+      div {
         width: 100%;
-        border-spacing: 0 8px;
+        display: flex;
+        justify-content: center;
+
+        span {
+          background: #fff;
+          color: #969cb3;
+          width: 200px;
+          font-weight: normal;
+          padding: 20px 15px;
+          margin: 1px;
+          text-align: center;
+          font-size: 16px;
+        }  
+
+        span:first-child {
+          border-radius: 8px 0 0 8px;
+        }
 
         button {
           background: #fff;
@@ -39,33 +58,27 @@ export const TableContainer = styled.div`
           width: 200px;
           font-weight: normal;
           padding: 20px 15px;
+          margin: 1px;
           text-align: center;
           font-size: 16px;
           border: 0;
-          border-radius: 8px 0 0 8px;
-
-          &:hover {
-            border: solid 1px #3BA239;
-          }
-        }
-      
-        td {
-          background: #fff;
-          color: #969cb3;
-          width: 200px;
-          font-weight: normal;
-          padding: 20px 15px;
-          text-align: center;
-          font-size: 16px;
-          border: 0;
-        }  
-
-        td:first-child {
-          border-radius: 8px 0 0 8px;
-        }
-
-        td:last-child {
           border-radius: 0 8px 8px 0;
+
+          &.Ativo {
+            color: #12a454;
+
+            &:hover {
+              border: solid 1px #12a454;
+            }
+          }
+
+          &.Inativo {
+            color: #e83f5b;
+
+            &:hover {
+              border: solid 1px #e83f5b;
+            }
+          }
         }
       }
     }
