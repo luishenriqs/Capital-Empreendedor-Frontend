@@ -1,21 +1,22 @@
 import React from 'react';
 import { Container } from './styles';
 import Logo from '../../assets/Logo2.png';
+import { Link } from 'react-router-dom';
 
-const Header: React.FC = ()=> (
+interface HeaderProps {
+  comment?: string;
+  signature?: string;
+  backText?: string;
+}
+
+const Header: React.FC<HeaderProps> = (props) => (
   <Container>
     <header>
       <img src={Logo} alt="Capital Empreendedor" />
-      <div>
-          <>
-            <h3>
-              “A Capital Empreendedor é o Tinder
-              do crédito que soluciona um problema
-              antigo para empresários: A busca do
-              MELHOR crédito para a empresa.”
-            </h3>
-            <h2>InfoMoney</h2>
-          </>
+      <div className="header-content">
+        <h3>{props.comment}</h3>
+        <h2>{props.signature}</h2>
+        <Link to={'/'}>{props.backText}</Link>
       </div>
     </header>
   </Container>

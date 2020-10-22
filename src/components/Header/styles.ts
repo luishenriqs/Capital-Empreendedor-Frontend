@@ -16,16 +16,24 @@ export const Container = styled.div`
       width: 300px;
     }
 
-    div {
+    h3 {
       margin-left: 400px;
       color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: opacity 0.2s;
+      font-size: 18px;
+    }
 
-      &:hover {
-        opacity: 0.6;
-      }
+    h2 {
+      margin-left: 680px;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    a {
+      width: 100px;
+      margin-left: 550px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
     }
   }
 `;

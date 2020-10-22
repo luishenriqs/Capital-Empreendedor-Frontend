@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import Header from '../../components/Header/index';
-import Footer from '../../components/Footer/index';
+import FormContainer from '../../components/FormContainer';
 import formatValue from '../../utils/FormatValue';
 import { Container } from './styles';
 
@@ -43,7 +43,9 @@ const Opportunities: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header 
+        backText="Voltar"
+      />
       <Container>
         <legend>Oportunidades {name}:</legend>
         <form>
@@ -83,7 +85,7 @@ const Opportunities: React.FC = () => {
           })}
         </form>
       </Container>
-      <Footer />
+      <FormContainer />
     </>
   );
 };

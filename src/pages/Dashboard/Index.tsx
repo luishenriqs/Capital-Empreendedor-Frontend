@@ -30,7 +30,11 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header 
+      comment="“A Capital Empreendedor é o Tinder do crédito que soluciona um 
+        problema antigo para empresários: A busca do MELHOR crédito para a empresa.”"
+      signature="InfoMoney"
+      />
       <Container>
         <legend>Nossos clientes:</legend>
         <form>

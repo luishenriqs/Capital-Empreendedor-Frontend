@@ -4,6 +4,7 @@ export const Container = styled.div`
 
   legend {
     font-size: 42px;
+
     color: #fff;
     text-align: center;
     margin: 60px auto 0;
