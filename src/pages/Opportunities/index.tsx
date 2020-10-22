@@ -41,6 +41,11 @@ const Opportunities: React.FC = () => {
     setResp(response.data);
   }
 
+  async function handleDelete(name: string): Promise<void> {
+    const response = await api.delete(`/opportunities/${email}/${name}`)
+    setResp(response.data);
+  }
+
   return (
     <>
       <Header 
@@ -57,6 +62,7 @@ const Opportunities: React.FC = () => {
                 <th>Interesse</th>
                 <th>Prazo</th>
                 <th>Ativo/Inativo</th>
+                <th>Deletar</th>
               </tr>
             </thead>
           </table>
@@ -76,8 +82,16 @@ const Opportunities: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => {handleChangeStatus(name, status)}}
-                    className={isActive}>
-                      {isActive}
+                    className={isActive}
+                  >
+                    {isActive}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {handleDelete(name)}}
+                    className="delete"
+                  >
+                    Deletar
                   </button>
                 </div>
               </section>

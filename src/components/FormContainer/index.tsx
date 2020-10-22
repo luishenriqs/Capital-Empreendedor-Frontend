@@ -22,7 +22,7 @@ const FormContainer: React.FC = () => {
   async function handleAddOpportunity(
     event: FormEvent<HTMLFormElement>
   ): Promise<Opportunity> {
-    event.preventDefault();
+    // event.preventDefault();
     const response = await api.post(`/opportunities/${email}`, {
       name: name,
       limit: limit,

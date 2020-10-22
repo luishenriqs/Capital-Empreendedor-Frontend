@@ -62,8 +62,7 @@ export const Container = styled.div`
           text-align: center;
           font-size: 16px;
           border: 0;
-          border-radius: 0 8px 8px 0;
-
+          
           &.Ativo {
             color: #12a454;
 
@@ -79,6 +78,15 @@ export const Container = styled.div`
               border: solid 1px #e83f5b;
             }
           }
+        }
+
+        button:last-child {
+          border-radius: 0 8px 8px 0;
+
+          &:hover {
+              border: solid 1px #e83f5b;
+              color: #e83f5b;
+            }
         }
       }
     }
