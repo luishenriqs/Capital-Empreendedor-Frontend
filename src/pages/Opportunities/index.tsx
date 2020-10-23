@@ -72,8 +72,8 @@ const Opportunities: React.FC = () => {
   /**************************************************************** */
   // Requisição "delete" chamada pelo botão "Deletar" na página "Opportunities".
 
-  async function handleDelete(name: string): Promise<void> {
-    const response = await api.delete(`/opportunities/${email}/${name}`)
+  async function handleDelete(index: number): Promise<void> {
+    const response = await api.delete(`/opportunities/${email}/${index}`)
     setResp(response.data);
   }
   /**************************************************************** */
@@ -100,7 +100,9 @@ const Opportunities: React.FC = () => {
           </table>
           {opportunities.map(opportunity => { 
 
+            const array = Object.values(opportunity);
             const name = opportunity.name;
+            const index = array.indexOf(name)
             const status = opportunity.isActive === true ? false : true;
             const isActive = opportunity.isActive === true ? "Ativo" : "Inativo";
             
@@ -120,7 +122,7 @@ const Opportunities: React.FC = () => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => {handleDelete(name)}}
+                    onClick={() => {handleDelete(index)}}
                     className="delete"
                   >
                     Deletar
