@@ -1,3 +1,22 @@
+/**************************************************************** */
+/* A página "Opportunities" é chamada quando um botão, na coluna da esquerda com 
+os nomes dos clientes na "Dashboard" é clicado. Ao se realizar essa ação é 
+disparada uma requisição que busca no arquivo "data-json", no backend, os dados
+das oportunidades do cliente específico alvo do click.
+Essa página, "Opportunities", exibe os campos "Nome", "Limite", "Interesse", 
+"Prazo", "Ativo/Inativo" e "Deletar".
+A coluna "Ativo/Inativo" é composta por um botão que permite editar o 'status' 
+da oportunidade. Ao ser acionado ele faz uma requisição 'Put' e altera o 
+respectivo campo no arquivo que simula o banco de dados. Imediatamente a 
+aplicação é renderizada exibindo o novo 'status'. 
+Por fim, na coluna da direita há um botão para deletar a oportunidade. Para que 
+isso ocorra, o botão dispara uma nova requisição para o backend, em seguida 
+a página é atualizada. 
+A página também conta com dois componentes. Um "Header" com um link exclusivo de
+"Voltar" que a direciona novamente para a "Dashboard", e um "FormContainer" 
+que exibe um formulário para criação de novas oportunidades. */
+/**************************************************************** */
+
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import Header from '../../components/Header/index';
@@ -23,6 +42,10 @@ const Opportunities: React.FC = () => {
   const email = params[1].replace('/','')
   const name = params[2].replace('%20','')
   
+  /**************************************************************** */
+  /* O useEffect permite que a aplicação seja renderizada a cada nova chamada e
+  sempre que houver uma alteração no status da oportunidade. */
+
   useEffect(() => {
     const loadOpportunities = async (): Promise<void> => {
       const response = await api.get(`/opportunities/${email}`);
@@ -32,7 +55,11 @@ const Opportunities: React.FC = () => {
     }
     loadOpportunities();
   }, [resp]);
+  /**************************************************************** */
   
+  /**************************************************************** */
+  // Requisição "put" que altera o 'status' da oportunidade do cliente.
+
   async function handleChangeStatus(name: string, status: boolean): Promise<void> {
     const response = await api.put(`/opportunities/${email}`, {
       name: name,
@@ -40,11 +67,16 @@ const Opportunities: React.FC = () => {
     })
     setResp(response.data);
   }
+  /**************************************************************** */
+
+  /**************************************************************** */
+  // Requisição "delete" chamada pelo botão "Deletar" na página "Opportunities".
 
   async function handleDelete(name: string): Promise<void> {
     const response = await api.delete(`/opportunities/${email}/${name}`)
     setResp(response.data);
   }
+  /**************************************************************** */
 
   return (
     <>

@@ -1,3 +1,15 @@
+/**************************************************************** */
+/* A Dashboard é a página principal desta aplicação, logo ao ser carregada ela
+exibe a listagem de todos os clientes e suas respectivas informações. Isso é 
+realizado pela função loadAll chamada pelo useEffect.
+No campo de listagem de clientes, a coluna da esquerda com o nome dos clientes 
+é um botão, que ao ser clicado nos direciona para a página "Opportunities" que 
+exibe as oportunidades do cliente alvo desse click.
+Além da listagem de clientes a página Dashboard conta com dois componentes, um 
+Header personalizado com um comentário sobre a empresa "Capital Empreendedor" 
+feito pela "InfoMoney", e um Footer.  */
+/**************************************************************** */
+
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import Header from '../../components/Header/index';
@@ -17,7 +29,12 @@ interface UserInterface {
 
 const Dashboard: React.FC = () => {
   const [allUsers, setAllUsers] = useState<UserInterface[]>([]);
-  
+
+/**************************************************************** */
+/* O "useEffect" permite que a aplicação exiba a listagem de clientes assim que
+a página é carregada, pois dispara a requisição "Get" que busca as informações 
+do cliente no arquivo "data-json" */
+
   useEffect(() => {
     async function loadAll(): Promise<void> {
       const response = await api.get('/users');
@@ -27,6 +44,7 @@ const Dashboard: React.FC = () => {
     }
     loadAll();
   }, []);
+  /**************************************************************** */
 
   return (
     <>

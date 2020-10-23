@@ -1,3 +1,10 @@
+/**************************************************************** */
+/* Componente "Header" personalizável. 
+Esse componente aceita três propriedades: um comentário e uma assinatura, que 
+são exibidos na "Dashboard" e um link "Voltar", exibido na página "Opportunities"
+que direciona a aplicação novamente para a página principal. */
+/**************************************************************** */
+
 import React from 'react';
 import { Container } from './styles';
 import Logo from '../../assets/Logo2.png';

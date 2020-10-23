@@ -1,3 +1,11 @@
+/**************************************************************** */
+/* Componente "FormContainer" de uso exclusivo da página "Opportunities". 
+Ele exibe um formulário para a criação de uma nova oportunidade para o cliente.
+Assim que o formulário é preenchido e submetido a função "handleAddOpportunity" 
+dispara uma requisição "post" criando no arquivo "data-json", no backend, essa 
+nova "opportunity" */
+/**************************************************************** */
+
 import React, { useState, FormEvent } from 'react';
 import api from '../../services/api';
 import { Container } from './styles';
